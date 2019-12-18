@@ -8,7 +8,7 @@ if($method == 'POST'){
 	$requestBody = file_get_contents("php://input");
 	$json = json_decode($requestBody);
 
-	$text = $json->result->parameters->text;
+	$text = $json->$result->$parameters->$text;
 	switch ($text) {
 		case 'hi':
 			$speech = "Hi, Nice to meet you"; 
@@ -28,7 +28,7 @@ if($method == 'POST'){
 	}
 
 	$response = new \stdClass();
-	$response->speech = $text."/".$json;
+	$response->speech = $text;
 	$response->displayText = $speech;
 	$response->source = "webhook";
 	echo json_encode($response);
