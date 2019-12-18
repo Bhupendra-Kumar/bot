@@ -7,7 +7,7 @@ if($method == 'POST'){
 	header('Content-Type: application/json');
 	$requestBody = file_get_contents("php://input");
 	$json = json_decode($requestBody, true);
-	$text = $json["result"]["parameters"]["text"];
+	$text = $json["queryResult"]["parameters"]["text"];
 	//$text = $json->$result->$parameters->$text;
 	switch ($text) {
 		case 'hi':
