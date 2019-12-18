@@ -10,15 +10,15 @@ if($method == 'POST'){
 	$text = $json["queryResult"]["parameters"]["text"];
 	//$text = $json->$result->$parameters->$text;
 	switch ($text) {
-		case 'hi':
+		case "hi":
 			$speech = "Hi, Nice to meet you"; 
 			break;
 
-		case 'bye':
+		case "bye":
 			$speech = "Bye, good night";
 			break;
 
-		case 'anything':
+		case "anything":
 			$speech = "Yes, you can type anything here.";
 			break;
 		
