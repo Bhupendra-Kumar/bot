@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 function processMessage($update){
-    if($update["result"]["action"]=="")
+    if($update["result"]["action"]=="Bhupendra kumar")
     {
         //$fp = file_put_contents('request.log', $update["result"]["parameters"]["msg"]);
         sendMessage(array(
