@@ -1,27 +1,41 @@
 <?php 
-header('Content-Type: application/json');
-function processMessage($update){
-    if($update["result"]["action"]=="Bhupendra kumar")
-    {
-        //$fp = file_put_contents('request.log', $update["result"]["parameters"]["msg"]);
-        sendMessage(array(
-            "source" => $update["result"]["source"],
-            "speech" => $update["result"]["parameters"]["msg"],
-            "displayText" => ".........Text Here............",
-            "contextOut" => array()
-        ));
-    }
+
+$method = $_SERVER['REQUEST_METHOD'];
+
+// Process only when method is POST
+if($method == 'POST'){
+	$requestBody = file_get_contents('php://input');
+	$json = json_decode($requestBody);
+
+	$text = $json->result->parameters->text;
+
+	switch ($text) {
+		case 'hi':
+			$speech = "Hi, Nice to meet you";
+			break;
+
+		case 'bye':
+			$speech = "Bye, good night";
+			break;
+
+		case 'anything':
+			$speech = "Yes, you can type anything here.";
+			break;
+		
+		default:
+			$speech = "Sorry, I didnt get that. Please ask me something else.";
+			break;
+	}
+
+	$response = new \stdClass();
+	$response->speech = $text;
+	$response->displayText = $speech;
+	$response->source = "webhook";
+	echo json_encode($response);
 }
-function sendMessage($parameters){
-    //$req_dump = print_r($parameters, true);
-    //$fp = file_put_contents('reques4.log, $req_dump');
-    //header('Content-Type: application/json');
-    echo json_encode($parameters);
+else
+{
+	echo "Method not allowed";
 }
 
-$update_response = file_get_contents("php://input");
-$update = json_decode($update_response, true);
-if(isset($update["result"]["action"])){
-    processMessage($update);
-}
 ?>
