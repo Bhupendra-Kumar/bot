@@ -29,7 +29,7 @@ if($method == 'POST'){
 
 	$response = new \stdClass();
 	$response->speech = $requestBody;
-	$response->displayText = $json["text"];
+	$response->displayText = $json["result"];
 	$response->displayText1 = $json["parameters"];
 	$response->displayText2 = $json["text"];
 	$response->displayText3 = $json["result"]["parameters"];
