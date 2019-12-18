@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 function processMessage($update){
     if($update["result"]["action"]=="")
     {
-        $fp = file_put_contents('request.log', $update["result"]["parameters"]["msg"]);
+        //$fp = file_put_contents('request.log', $update["result"]["parameters"]["msg"]);
         sendMessage(array(
             "source" => $update["result"]["source"],
             "speech" => $update["result"]["parameters"]["msg"],
@@ -13,9 +13,9 @@ function processMessage($update){
     }
 }
 function sendMessage($parameters){
-    $req_dump = print_r($parameters, true);
-    $fp = file_put_contents('reques4.log, $req_dump');
-    header('Content-Type: application/json');
+    //$req_dump = print_r($parameters, true);
+    //$fp = file_put_contents('reques4.log, $req_dump');
+    //header('Content-Type: application/json');
     echo json_encode($parameters);
 }
 
