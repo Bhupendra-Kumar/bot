@@ -1,4 +1,4 @@
-<?php 
+<?php
 header('Content-Type: application/json');
 function processMessage($update){
     if($update["result"]["action"]=="")
@@ -14,8 +14,8 @@ function processMessage($update){
 }
 function sendMessage($parameters){
     $req_dump = print_r($parameters, true);
-    $fp = file_put_contents('reques4.log, $req_dump);
-    header('content-Type: application/json');
+    $fp = file_put_contents('reques4.log, $req_dump');
+    header('Content-Type: application/json');
     echo json_encode($parameters);
 }
 
