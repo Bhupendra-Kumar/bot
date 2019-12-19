@@ -7,6 +7,7 @@ if($method == 'POST'){
 	header('Content-Type: application/json');
 	$requestBody = file_get_contents("php://input");
 	$json = json_decode($requestBody, true);
+	$HospitalName = $json["queryResult"]["parameters"]["HospitalName"];
 	$appointment = $json["queryResult"]["parameters"]["appointment"];
 	$DoctorName = $json["queryResult"]["parameters"]["DoctorName"];
 	$Time = $json["queryResult"]["parameters"]["Time"];
