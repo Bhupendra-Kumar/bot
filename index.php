@@ -7,6 +7,9 @@ if($method == 'POST'){
 	header('Content-Type: application/json');
 	$requestBody = file_get_contents("php://input");
 	$json = json_decode($requestBody, true);
+	$appointment = $json["queryResult"]["parameters"]["appointment"];
+	$DoctorName = $json["queryResult"]["parameters"]["DoctorName"];
+	$Time = $json["queryResult"]["parameters"]["Time"];
 	$text = $json["queryResult"]["parameters"]["text"];
 	//$text = $json->$result->$parameters->$text;
 	switch ($text) {
@@ -28,7 +31,7 @@ if($method == 'POST'){
 	}
 
 	$response = new \stdClass();
-	$response->speech = $speech;
+	$response->speech = $speech."/".$appointment."/".$DoctorName."/".$Time;
 	$response->displayText = $speech;
 	$response->source = "General";
 	echo json_encode($response);
