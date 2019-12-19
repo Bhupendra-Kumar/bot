@@ -34,7 +34,7 @@ if($method == 'POST'){
 	//echo json_encode($response);
 	
 	sendMessage(array(
-            "source" => $update["queryResult"]["source"],
+            "source" => $json["queryResult"]["source"],
             "speech" => $speech,
             "displayText" => $speech,
             "contextOut" => array()
