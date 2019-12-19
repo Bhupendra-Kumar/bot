@@ -32,7 +32,9 @@ if($method == 'POST'){
 	}
 
 	$response = new \stdClass();
-	$response->speech = $speech."/".$appointment."/".$DoctorName."/".$Time;
+	//$response->speech = $speech."/".$appointment."/".$DoctorName."/".$Time;
+	//$response->displayText = $speech;
+	$response->fulfillmentText = $speech;
 	$response->displayText = $speech;
 	$response->source = "General";
 	echo json_encode($response);
