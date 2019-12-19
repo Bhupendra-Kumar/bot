@@ -30,7 +30,7 @@ if($method == 'POST'){
 	$response = new \stdClass();
 	$response->speech = $speech;
 	$response->displayText = $speech;
-	$response->source = $json["queryResult"]["source"];
+	$response->source = $json;
 	echo json_encode($response);
 }
 else
