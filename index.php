@@ -30,7 +30,7 @@ if($method == 'POST'){
 	$response = new \stdClass();
 	$response->speech = $speech;
 	$response->displayText = $speech;
-	$response->source = $json["intent"]["displayName"];
+	$response->source = "General";
 	echo json_encode($response);
 }
 else
