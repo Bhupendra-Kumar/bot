@@ -18,7 +18,7 @@ if($method == 'POST'){
 	}
 	else if(($appointment != "" && $appointment != null) && ($DoctorName != "" && $DoctorName != null) && ($Time != "" && $Time != null))
 	{
-		$speech = "Yes sure, its my plesure, your appointment has been booked with doctor ".$DoctorName." At .$Time.", Thank you";
+		$speech = "Yes sure, its my plesure, your appointment has been booked with doctor ".$DoctorName." At ".$Time.", Thank you";
 	}
 	else if(($appointment != "" && $appointment != null) && ($DoctorName != "" && $DoctorName != null))
 	{
@@ -26,7 +26,7 @@ if($method == 'POST'){
 	}
 	else if(($appointment != "" && $appointment != null))
 	{
-		$speech = "Yes sure, its my plesure, your appointment has been booked, Thank you"";
+		$speech = "Yes sure, its my plesure, your appointment has been booked, Thank you";
 	}
 	else
 	{
