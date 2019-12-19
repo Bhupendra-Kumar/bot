@@ -27,11 +27,22 @@ if($method == 'POST'){
 			break;
 	}
 
-	$response = new \stdClass();
-	$response->speech = $speech;
-	$response->displayText = $speech;
-	$response->source = "webhook";
-	echo json_encode($response);
+	//$response = new \stdClass();
+	//$response->speech = $speech;
+	//$response->displayText = $speech;
+	//$response->source = "webhook";
+	//echo json_encode($response);
+	
+	sendMessage(array(
+            "source" => $update["queryResult"]["source"],
+            "speech" => $speech,
+            "displayText" => $speech,
+            "contextOut" => array()
+        ));
+	
+	function sendMessage($parameters) {
+    		echo json_encode($parameters);
+	}
 }
 else
 {
