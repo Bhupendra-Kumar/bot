@@ -12,7 +12,24 @@ if($method == 'POST'){
 	$DoctorName = $json["queryResult"]["parameters"]["DoctorName"];
 	$Time = $json["queryResult"]["parameters"]["Time"];
 	$text = $json["queryResult"]["parameters"]["text"];
-	
+	if($HospitalName != "" && $HospitalName != null)
+	{
+		$speech = "Yes this is ".$HospitalName." How can help you";
+	}
+	else if(($appointment != "" && $appointment != null) && ($DoctorName != "" && $DoctorName != null) && ($Time != "" && $Time != null))
+	{
+		$speech = "Yes sure, its my plesure, your appointment has been booked with doctor ".$DoctorName." At ".$Time.", Thank you";
+	}
+	else if(($appointment != "" && $appointment != null) && ($DoctorName != "" && $DoctorName != null))
+	{
+		$speech = "Yes sure, its my plesure, your appointment has been booked with doctor ".$DoctorName.", Thank you";
+	}
+	else if(($appointment != "" && $appointment != null))
+	{
+		$speech = "Yes sure, its my plesure, your appointment has been booked, Thank you";
+	}
+	else
+	{
 	switch ($text) {
 		case "hi":
 			$speech = "Hi, Nice to meet you"; 
@@ -30,9 +47,12 @@ if($method == 'POST'){
 			$speech = $text;
 			break;
 	}
+	}
 
 	$response = new \stdClass();
-	$response->speech = $speech."/".$appointment."/".$DoctorName."/".$Time;
+	//$response->speech = $speech."/".$appointment."/".$DoctorName."/".$Time;
+	//$response->displayText = $speech;
+	$response->fulfillmentText = $speech;
 	$response->displayText = $speech;
 	$response->source = "General";
 	echo json_encode($response);
