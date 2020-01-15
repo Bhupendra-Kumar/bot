@@ -7,51 +7,17 @@ if($method == 'POST'){
 	header('Content-Type: application/json');
 	$requestBody = file_get_contents("php://input");
 	$json = json_decode($requestBody, true);
-	$HospitalName = $json["queryResult"]["parameters"]["HospitalName"];
-	$appointment = $json["queryResult"]["parameters"]["appointment"];
-	$DoctorName = $json["queryResult"]["parameters"]["DoctorName"];
-	$Time = $json["queryResult"]["parameters"]["Time"];
-	$text = $json["queryResult"]["parameters"]["text"];
-	if($HospitalName != "" && $HospitalName != null)
+	$Empname = $json["queryResult"]["parameters"]["Empname"];
+	if($Empname != "" && $Empname != null)
 	{
-		$speech = "Yes this is ".$HospitalName." How can help you";
-	}
-	else if(($appointment != "" && $appointment != null) && ($DoctorName != "" && $DoctorName != null) && ($Time != "" && $Time != null))
-	{
-		$speech = "Yes sure, its my plesure, your appointment has been booked with doctor ".$DoctorName." At ".$Time.", Thank you";
-	}
-	else if(($appointment != "" && $appointment != null) && ($DoctorName != "" && $DoctorName != null))
-	{
-		$speech = "Yes sure, its my plesure, your appointment has been booked with doctor ".$DoctorName.", Thank you";
-	}
-	else if(($appointment != "" && $appointment != null))
-	{
-		$speech = "Yes sure, its my plesure, your appointment has been booked, Thank you";
+		$speech = "Ya sure, which type of number you want intercom number , telephone number or mobile number";
 	}
 	else
 	{
-	switch ($text) {
-		case "hi":
-			$speech = "Hi, Nice to meet you"; 
-			break;
-
-		case "bye":
-			$speech = "Bye, good night";
-			break;
-
-		case "anything":
-			$speech = "Yes, you can type anything here.";
-			break;
-		
-		default:
-			$speech = $text;
-			break;
-	}
+		$speech = "Ya sure, May i have the employee name or emailid";
 	}
 
 	$response = new \stdClass();
-	//$response->speech = $speech."/".$appointment."/".$DoctorName."/".$Time;
-	//$response->displayText = $speech;
 	$response->fulfillmentText = $speech;
 	$response->displayText = $speech;
 	$response->source = "General";
